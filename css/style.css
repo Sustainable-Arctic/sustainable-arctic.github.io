@@ -8,8 +8,10 @@
         margin: auto;
 
         position:relative;  
-        width: 800px;
-        height: 400px;
+        width: 97%;
+        height: 600px;
+        padding-bottom: 30px;
+        padding: auto;
       }
       
       /* Optional: Makes the sample page fill the window. */
