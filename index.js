@@ -4119,7 +4119,7 @@ function calculateDistances() {
 
     let distances = [];
 
-    var minDistance = Number.POSITIVE_INFINITY;
+    minDistance = Number.POSITIVE_INFINITY;
     maxDistance = Number.NEGATIVE_INFINITY;
     for (let i = 0; i < googleHexes.length; i++) {
         let hexParams = googleHexes[i].get("hex");
@@ -4175,6 +4175,7 @@ function initMap() {
     });
     map.mapTypes.set("styled_map", styledMapType);
     map.setMapTypeId("styled_map");
+
 
     /*
     let url = "http://192.168.0.35:8080/api/marketplace/getUseCaseParams/1";
