@@ -4074,6 +4074,17 @@ class Hex {
             { lng: this.center_lng - 1/2*size*distortion, lat: this.center_lat + height },
             { lng: this.center_lng - size*distortion, lat: this.center_lat}
         ];
+        let scale_const = 1.3;
+        this.triangleCoordsBig = [
+            { lng: this.center_lng - 1/2*size*distortion * scale_const, lat: this.center_lat - height * scale_const },
+            { lng: this.center_lng + 1/2*size*distortion * scale_const, lat: this.center_lat - height * scale_const },
+            { lng: this.center_lng + size*distortion * scale_const, lat: this.center_lat},
+            { lng: this.center_lng + 1/2*size*distortion * scale_const, lat: this.center_lat + height * scale_const },
+            { lng: this.center_lng - 1/2*size*distortion * scale_const, lat: this.center_lat + height * scale_const },
+            { lng: this.center_lng - size*distortion * scale_const, lat: this.center_lat}
+        ];
+        this.opacityNonHover = 0.35;
+        this.opacityHover = 1.0;
     }
 
     draw() {
@@ -4083,7 +4094,7 @@ class Hex {
             strokeOpacity: 0.8,
             strokeWeight: 3,
             fillColor: "grey",
-            fillOpacity: 0.35,
+            fillOpacity: this.opacityNonHover,
         });
         return bermudaTriangle;
     }
@@ -4195,16 +4206,30 @@ function initMap() {
         for (let y = 0; y < jsonFile.hexGridResolution[0].height; y++)
         {
             let hex = new Hex(jsonFile.data[i].lon, jsonFile.data[i].lat, size, distortion);                
-            googleHex = hex.draw();
+            let googleHex = hex.draw();
             googleHex.setMap(map);
             googleHex.set("hex", jsonFile.data[i]);
-            googleHex.addListener("click", showArrays);  
+            googleHex.addListener("click", showArrays);
+            googleHex.addListener("mouseover", () => { highlightCell(hex, googleHex) });    
+            googleHex.addListener("mouseout", () => { unHighlightCell(hex, googleHex) });  
             googleHexes.push(googleHex);
             i++;
         }
     }
 
     infoWindow = new google.maps.InfoWindow();
+}
+
+function highlightCell(hex, googleHex){
+    googleHex.setOptions({zIndex : 1});
+    googleHex.setOptions({paths : hex.triangleCoordsBig});
+    googleHex.setOptions({fillOpacity : hex.opacityHover});
+}
+
+function unHighlightCell(hex, googleHex){
+    googleHex.setOptions({zIndex : 0});
+    googleHex.setOptions({paths : hex.triangleCoords});
+    googleHex.setOptions({fillOpacity : hex.opacityNonHover});
 }
 
 function createPrintout(atribute, atributeName) {
