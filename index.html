@@ -13,12 +13,12 @@
 		<link rel="stylesheet" href="css/font-awesome.min.css">
 		<link rel="stylesheet" href="css/animate.min.css">
 		<link rel="stylesheet" href="css/templatemo-style.css">
+    	<script src="https://unpkg.com/three@0.129.0/build/three.min.js"></script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'/>
-
-		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> -->
 		<link rel="stylesheet" type="text/css" href="css/style.css">
-		<script src="./index.js"></script>
+		<script type="module" src="./index.js"></script>
 
 	</head>
 	<!-- 
@@ -178,21 +178,24 @@
 					</div>
 				</div>
 			</div>
-			<div id="map"> </div>
-		</br>
 			<div class="container">
 				<div class="row">
 					<div class="text-center col-md-12 wow fadeInDown" data-wow-delay="2000">
 					</div>
 					<select id="useCaseSelector" class="form-control">
-						<option type="text" option value="1" class="form-control" >UseCase1: PowerPlant for Co2 recapture</option>
-						<option value="2" class="form-control" >UseCase2: PowerPlant for Co2 production (mining)</option>
+						<option type="text" value="1" class="form-control" >UseCase1: Power plant for Co2 recapture</option>
+						<option type="text" value="2" class="form-control" >UseCase2: Power plant for remote village</option>
 					</select>
+					<p>
+						{"temperature":{"min": 247,"max": 310,"mean": 300},"wind_speed":{"min": 0.1,"max": 8,"mean": 6}}
+					</p>
+					<input type="text" id="inputOverride" value=''>
+
 					<button onclick="redrawMap()" class="form-control">Localize</button> 
-					</br>
 				</div>
 
 			</div>
+			<div id="map"> </div>
 		</section>
 
 
