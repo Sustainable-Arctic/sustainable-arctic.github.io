@@ -8,6 +8,11 @@
   </head>
   <body>
     <div id="map"></div>
+    <select id="useCaseSelector">
+        <option value="1">UseCase1: PowerPlant for Co2 recapture</option>
+        <option value="2">UseCase2: PowerPlant for Co2 production (mining)</option>
+    </select>
+    <button onclick="redrawMap()">Localize</button> 
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script

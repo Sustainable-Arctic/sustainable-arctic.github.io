@@ -1,0 +1,50 @@
+{
+    "leftTopGeoPos": [
+      17.486770847915672,
+      66.14555609777774
+    ],
+    "hexGridResolution": [
+      {
+        "width": 2,
+        "height": 2
+      }
+    ],
+    "cellWidthMeters": 1000,
+    "data": [
+        {
+            "x": 0,
+            "y": 0,
+            "temp":
+            {
+                "min": -200,
+                "max": 1000,
+                "mean": 500,
+                "std": 1000
+            },
+            "speed":
+            {
+                "min": -300,
+                "max": 2000,
+                "mean": 800,
+                "std": 25
+            }   
+        }, {
+            "x": 1,
+            "y": 0,
+            "temp":
+            {
+                "min": -200,
+                "max": 1000,
+                "mean": 500,
+                "std": 1000
+            },
+            "speed":
+            {
+                "min": -300,
+                "max": 2000,
+                "mean": 800,
+                "std": 25
+            }
+        }
+    ]
+}  
