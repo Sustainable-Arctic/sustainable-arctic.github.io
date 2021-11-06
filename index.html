@@ -1,23 +1,333 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Polygon Arrays</title>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <link rel="stylesheet" type="text/css" href="./style.css" />
-    <script src="./index.js"></script>
-  </head>
-  <body>
-    <div id="map"></div>
-    <select id="useCaseSelector">
-        <option value="1">UseCase1: PowerPlant for Co2 recapture</option>
-        <option value="2">UseCase2: PowerPlant for Co2 production (mining)</option>
-    </select>
-    <button onclick="redrawMap()">Localize</button> 
+<html lang="en">
 
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&v=weekly"
-      async
-    ></script>
-  </body>
+	<head>
+		<meta charset="utf-8">
+		<title>Sustainable Arctic</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="keywords" content="">
+		<meta name="description" content="">
+		<link rel="icon" type="image/png" href="images/favicon.png">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/animate.min.css">
+		<link rel="stylesheet" href="css/templatemo-style.css">
+
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'/>
+
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script> -->
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script src="./index.js"></script>
+
+	</head>
+	<!-- 
+        Crystal Template 
+        http://www.templatemo.com/tm-437-crystal
+    -->
+	<body data-spy="scroll" data-target=".navbar-collapse">
+
+		<!-- start navigation -->
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="row">
+					<div class="navbar-header">
+						<button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="icon icon-bar"></span>
+							<span class="icon icon-bar"></span>
+							<span class="icon icon-bar"></span>
+						</button>
+						<a href="#" class="navbar-brand"><h3>SUSTAINABLE ARCTIC</h3></a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="#home" class="smoothScroll">HOME</a></li>
+							<li><a href="#idea" class="smoothScroll">IDEA</a></li>
+							<li><a href="#about" class="smoothScroll">ABOUT</a></li>
+							<li><a href="#team" class="smoothScroll">TEAM</a></li>
+							<li><a href="#service" class="smoothScroll">SERVICES</a></li>
+							<li><a href="#contact" class="smoothScroll">CONTACT</a></li>
+						</ul>
+					</div>
+				</div>				
+			</div>
+		</nav>
+		<!-- end navigation -->
+
+		<!-- start home -->
+		<section id="home" class="text-center">
+		  <div class="templatemo_headerimage">
+		    <div class="flexslider">
+		      <ul class="slides">
+		        <li>
+		        	<img src="images/slider/1.jpg" alt="Slide 1">
+		        	<div class="slider-caption">
+					    <div class="templatemo_homewrapper">
+					      <h1 class="wow fadeInDown" data-wow-delay="2000">Green Energy for green soutions</h1>
+					      <h2 class="wow fadeInDown" data-wow-delay="2000">
+							<span class="wow">Protect Arctic with local renewable energy</span>
+						</h2>
+						<a href="#about" class="smoothScroll btn btn-default wow fadeInDown" data-wow-delay="2000">Services</a>	
+					    </div>
+				  	</div>
+		        </li>
+		      </ul>
+		    </div>
+		  </div>				
+		</section>
+		<!-- end home -->
+
+		<!-- start pricing -->
+		<!-- <section id="idea" class="text-center">
+			<div class="container">
+				<div class="row">
+					<div class="text-center col-md-12 wow fadeInDown" data-wow-delay="2000">
+						<h3>Technology</h3>
+						<h2>We analyze the potential of renewables beyond the polar circle </h2>
+						<h2>We analyze the potential of renewables beyond the polar circle </h2>
+					</div>
+				</div>
+			</div>
+		</section> -->
+		<!-- end pricing -->
+
+		<!-- start service -->
+		<section id="service">
+			<div class="container">
+				<div class="row">
+					<div class="text-center col-md-12 wow fadeInDown" data-wow-delay="2000">
+						<h3>Our services</h3>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-md-8 text-center">
+						<p>We analyze the potential of renewables beyond the polar circle</p>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-sm-6 col-md-4 wow fadeInLeft" data-wow-delay="2000">
+						<div class="media">
+							<i class="fa fa-globe pull-left media-object"></i>
+								<div class="media-body">
+									<h4 class="media-heading">LAND STABILITY</h4>
+									<p>Analyse land stability of area.</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4 wow fadeInDown" data-wow-delay="2000">
+						<div class="media">
+							<i class="fa fa-globe pull-left media-object"></i>
+								<div class="media-body">
+									<h4 class="media-heading">WIND ENERGY</h4>
+									<p>Analyse energetic potential of area based on wind energy.</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4 wow fadeInRight" data-wow-delay="2000">
+						<div class="media">
+							<i class="fa fa-globe pull-left media-object"></i>
+								<div class="media-body">
+									<h4 class="media-heading">WATER ENERGY</h4>
+									<p>Analyse energetic potential of area based on water energy.</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4 wow fadeInLeft" data-wow-delay="2000">
+						<div class="media">
+							<i class="fa fa-globe pull-left media-object"></i>
+								<div class="media-body">
+									<h4 class="media-heading">Relief clacification</h4>
+									<p>Providing area clasification based </p>
+								</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4 wow fadeInDown" data-wow-delay="2000">
+						<div class="media">
+							<i class="fa fa-globe pull-left media-object"></i>
+								<div class="media-body">
+									<h4 class="media-heading">Bla</h4>
+									<p>I.</p>
+								</div>
+						</div>
+					</div>
+					<div class="col-sm-6 col-md-4 wow fadeInRight" data-wow-delay="2000">
+						<div class="media">
+							<i class="fa fa-globe pull-left media-object"></i>
+								<div class="media-body">
+									<h4 class="media-heading">bla</h4>
+									<p>Bla.</p>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+
+		<section id="about">				
+			<div class="container">
+
+				<div class="row">
+
+					<div class="text-center col-md-12 wow fadeInDown" data-wow-delay="2000">
+						<h3>Our services</h3>
+					</div>
+					<div id="map">
+					</div>
+				</br>
+			</br>
+		</br>
+
+					<div class="text-center col-md-12 wow fadeInDown" data-wow-delay="2000">
+					</div>
+					<select id="useCaseSelector" class="form-control">
+						<option type="text" option value="1" class="form-control" >UseCase1: PowerPlant for Co2 recapture</option>
+						<option value="2" class="form-control" >UseCase2: PowerPlant for Co2 production (mining)</option>
+					</select>
+					<button onclick="redrawMap()" class="form-control">Localize</button> 
+				</div>
+			</div>
+		</section>
+
+		<section id="team" class="text-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 wow fadeInDown" data-wow-delay="900">
+						<h3>MEET OUR TEAM</h3>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<p>Bla Bla Bla Bla</p>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-sm-3 col-md-3 wow fadeInLet" data-wow-delay="2000">
+						<div class="team_thumb">
+							<img src="images/team-img-no.jpg" class="img-responsive" alt="team">
+								<div class="team_overlay">
+									<ul class="social_icon">
+										<li><a href="#" class="fa fa-github"></a></li>
+										<li><a href="#" class="fa fa-linkedin"></a></li>
+									</ul>								
+								</div>
+						</div>
+						<div class="team_description">
+							<h4>Jakub Bajzík</h4>
+							<h5>CEO</h5>
+						</div>
+					</div>
+					<div class="col-sm-3 col-md-3 wow fadeInUp" data-wow-delay="2000">
+						<div class="team_thumb">
+							<img src="images/team-img-no.jpg" class="img-responsive" alt="team">
+								<div class="team_overlay">
+									<ul class="social_icon">
+										<li><a href="#" class="fa fa-github"></a></li>
+										<li><a href="#" class="fa fa-linkedin"></a></li>
+									</ul>
+								</div>
+						</div>
+						<div class="team_description">
+							<h4>Adam Riečický</h4>
+							<h5>CTO</h5>
+						</div>
+					</div>
+					<div class="col-sm-3 col-md-3 wow fadeInUp" data-wow-delay="2000">
+						<div class="team_thumb">
+							<img src="images/team-img-no.jpg" class="img-responsive" alt="team">
+								<div class="team_overlay">
+									<ul class="social_icon">
+										<li><a href="#" class="fa fa-github"></a></li>
+										<li><a href="#" class="fa fa-linkedin"></a></li>
+									</ul>
+								</div>
+						</div>
+						<div class="team_description">
+							<h4>Michal Mesároš</h4>
+							<h5>CMO</h5>
+						</div>
+					</div>
+					<div class="col-sm-3 col-md-3 wow fadeInRight" data-wow-delay="2000">
+						<div class="team_thumb">
+							<img src="images/team-img-no.jpg" class="img-responsive" alt="team">
+								<div class="team_overlay">
+									<ul class="social_icon">
+										<li><a href="#" class="fa fa-github"></a></li>
+										<li><a href="#" class="fa fa-linkedin"></a></li>
+									</ul>
+								</div>
+						</div>
+						<div class="team_description">
+							<h4>Max Karel</h4>
+							<h5>CBO</h5>
+						</div>
+					</div>
+					<div class="col-sm-3 col-md-3 wow fadeInRight" data-wow-delay="2000">
+						<div class="team_thumb">
+							<img src="images/team-img-no.jpg" class="img-responsive" alt="team">
+								<div class="team_overlay">
+									<ul class="social_icon">
+										<li><a href="#" class="fa fa-github"></a></li>
+										<li><a href="#" class="fa fa-linkedin"></a></li>
+									</ul>
+								</div>
+						</div>
+						<div class="team_description">
+							<h4>Lukáš Gajdošech</h4>
+							<h5>CTO</h5>
+						</div>
+					</div>
+					<div class="col-sm-3 col-md-3 wow fadeInRight" data-wow-delay="2000">
+						<div class="team_thumb">
+							<img src="images/team-img-5.jpg" class="img-responsive" alt="team">
+								<div class="team_overlay">
+									<ul class="social_icon">
+										<li><a href="#" class="fa fa-github"></a></li>
+										<li><a href="#" class="fa fa-linkedin"></a></li>
+									</ul>
+								</div>
+						</div>
+						<div class="team_description">
+							<h4>Jozef Volák</h4>
+							<h5>CDO</h5>
+						</div>
+					</div>							
+				</div>
+			</div>
+		</section>
+
+		<!-- end service -->
+
+
+
+		<!-- start contact -->
+		<section id="contact" class="text-center">
+			<footer class="container">
+				<div class="col-md-12 wow fadeInUp" data-wow-duration="0.4s" data-wow-delay="0.4s">
+					<span>
+                    	Copyright &copy; 2015 Your Company Name
+                    </span>
+					<ul class="social_icon">
+				    <li><a href="#" class="fa fa-facebook"></a></li>
+						<li><a href="#" class="fa fa-twitter"></a></li>
+						<li><a href="#" class="fa fa-instagram"></a></li>
+						<li><a href="#" class="fa fa-apple"></a></li>
+						<li><a href="#" class="fa fa-pinterest"></a></li>
+						<li><a href="#" class="fa fa-google"></a></li>
+						<li><a href="#" class="fa fa-wordpress"></a></li>
+					</ul>
+				</div>
+			</footer>
+		</section>
+		<!-- end contact -->
+
+		<!-- start javascript -->
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/jquery.simple-text-rotator.js"></script>
+		<script src="js/smoothscroll.js"></script>
+		<script src="js/wow.min.js"></script>
+		<script src="js/jquery.flexslider.js"></script>
+		<script src="js/templatemo-script.js"></script>
+
+		<script src="https://maps.googleapis.com/maps/api/js?key=&callback=initMap&v=weekly" async></script>
+	  <!-- end javascript -->
+	</body>	
 </html>
