@@ -4157,7 +4157,7 @@ function redrawMap() {
     }
 }
 
-function initMap() {
+async function initMap() {
     const styledMapType = new google.maps.StyledMapType(
         mapStyle,
         { name: "Styled Map" }
@@ -4167,8 +4167,6 @@ function initMap() {
         zoom: 7,
         center: { lat: 68.5, lng: 22.5 },
         mapTypeId: "terrain",
-        gestureHandling: "none",
-        zoomControl: false,
         mapTypeControlOptions: {
             mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "styled_map"],
           },            
@@ -4177,16 +4175,24 @@ function initMap() {
     map.setMapTypeId("styled_map");
 
 
-    /*
+    //let url = "https://hexarctic-djzrqidwea-ey.a.run.app/api/marketplace/getUseCaseParams/1";
     let url = "http://192.168.0.35:8080/api/marketplace/getUseCaseParams/1";
-    fetch(url).then(function(response) {
+    let response = await fetch(url).then(function(response) {
         return response.json();
       }).then(function(data) {
-        console.log(data);
+        return data;
       }).catch(function() {
         console.log("Booo");
-      }); 
-*/
+      });
+
+    if (response != null) {
+        jsonFile = response;
+        console.log("Using Live data", jsonFile.hexGridResolution[0].width);
+    } else {
+        console.log("Using Hardocded data", jsonFile.hexGridResolution[0].width);
+    }
+    
+
 
     let size = jsonFile.cellWidthDegrees/2;
     let distortion = 3.0;
