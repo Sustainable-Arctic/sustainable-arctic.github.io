@@ -3385,6 +3385,7 @@ function initMap() {
     map.setMapTypeId("styled_map");
 
 
+    /*
     let url = "http://192.168.0.35:8080/api/marketplace/getUseCaseParams/1";
     fetch(url).then(function(response) {
         return response.json();
@@ -3393,7 +3394,7 @@ function initMap() {
       }).catch(function() {
         console.log("Booo");
       }); 
-
+*/
 
     let size = jsonFile.cellWidthDegrees/2;
     let distortion = 3.0;
