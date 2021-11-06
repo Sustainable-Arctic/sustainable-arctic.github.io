@@ -3313,7 +3313,7 @@ class Hex {
 let map;
 let infoWindow;
 var googleHexes = [];
-var colors = ['red', 'yellow', 'olive', 'lime']
+var colors = ['lime', 'olive', 'yellow', 'red']
 var minDistance = Number.POSITIVE_INFINITY;
 var maxDistance = Number.NEGATIVE_INFINITY;
 
@@ -3324,8 +3324,7 @@ function parameterDistance(optimalAtribute, hexAtribute) {
     return (hexAtribute.mean - optimalAtribute.mean) * (hexAtribute.mean - optimalAtribute.mean);
 }
 
-function calculateDistances()
-{
+function calculateDistances() {
     var e = document.getElementById("useCaseSelector");
 
     let optimalParams = jsonBuildings.parameters[parseInt(e.value)-1];
@@ -3336,45 +3335,31 @@ function calculateDistances()
         let currentDistance = 0;
         currentDistance += parameterDistance(optimalParams.temp, hexParams.temperature);
         currentDistance += parameterDistance(optimalParams.speed, hexParams.u_wind);
-
-        //currentDistance = Math.random() * 1000 - 500;
-        //if (Math.floor(currentDistance)  % 10 == 0)
-        //{
-        //    currentDistance = Number.NEGATIVE_INFINITY;
-        //}
-
         distances.push(currentDistance);
 
-        if (currentDistance != Number.NEGATIVE_INFINITY)
-        {
+        if (currentDistance != Number.NEGATIVE_INFINITY) {
             if (currentDistance < minDistance)
-            {
                 minDistance = currentDistance;
-            }
             if (currentDistance > maxDistance)
-            {
                 maxDistance = currentDistance;
-            }
         }
     }
 
     return distances;
 }
 
-function redrawMap()
-{
+function redrawMap() {
     var e = document.getElementById("useCaseSelector");
     console.log("Selected use case" + e.value);
 
     let distances = calculateDistances();
     for (let i = 0; i < googleHexes.length; i++) {
-
         let distance = ((distances[i]-minDistance)/(maxDistance-minDistance));
         if (distance == Number.NEGATIVE_INFINITY) {
-            googleHexes[i].setOptions({fillColor : 'grey'});
+            googleHexes[i].setOptions({fillColor : 'black'});
         }
         else {   
-            distance = Math.floor(distance * colors.length);
+            distance = Math.floor(distance * (colors.length-1));
             googleHexes[i].setOptions({fillColor : colors[distance]});
         }
     }
@@ -3387,11 +3372,11 @@ function initMap() {
       );
 
     map = new google.maps.Map(document.getElementById("map"), {
-        zoom: 6,
-        center: { lat: 67.25, lng: 26 },
+        zoom: 7,
+        center: { lat: 68.5, lng: 22.5 },
         mapTypeId: "terrain",
-        //gestureHandling: "none",
-        //zoomControl: false,
+        gestureHandling: "none",
+        zoomControl: false,
         mapTypeControlOptions: {
             mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "styled_map"],
           },            
@@ -3399,24 +3384,23 @@ function initMap() {
     map.mapTypes.set("styled_map", styledMapType);
     map.setMapTypeId("styled_map");
 
-    console.log(jsonFile.data[0].lat - jsonFile.data[1].lat);
-    let size = 0.15;
+
+    let url = "http://192.168.0.35:8080/api/marketplace/getUseCaseParams/1";
+    fetch(url).then(function(response) {
+        return response.json();
+      }).then(function(data) {
+        console.log(data);
+      }).catch(function() {
+        console.log("Booo");
+      }); 
+
+
+    let size = jsonFile.cellWidthDegrees/2;
     let distortion = 3.0;
     let i = 0;
     for (let x = 0; x < jsonFile.hexGridResolution[0].width*3; x+= distortion) {
         for (let y = 0; y < jsonFile.hexGridResolution[0].height; y++)
         {
-            let delta_x = 3 * size / 2 * x;
-            let delta_y = 2 * size * y;
-            if ((x/distortion) % 2 !== 0) {
-                delta_y += size;
-            }
-            
-            //let hex = new Hex(jsonFile.leftTopGeoPos[0] + delta_x, 
-            //                  jsonFile.leftTopGeoPos[1] - delta_y, 
-            //                  size, distortion);
-                              
-
             let hex = new Hex(jsonFile.data[i].lon, jsonFile.data[i].lat, size, distortion);                
             googleHex = hex.draw();
             googleHex.setMap(map);
@@ -3431,27 +3415,54 @@ function initMap() {
 }
 
 function createPrintout(atribute, atributeName) {
-    return "<br>" + atributeName + ": " + atribute.max + ", " +  atribute.min;
+    return "<tr>" +
+            "<th><b>" + atributeName + "</b></th>" + 
+            "<th>" + atribute.min.toFixed(2) + "</th>" +
+            "<th>" + atribute.max.toFixed(2) + "</th>" +
+            "<th>" + atribute.mean.toFixed(2) + "</th>" +
+           "</tr>"
 }
 
 function showArrays(event) {
-  const polygon = this;
+    const polygon = this;
 
-  let contentString =
-    "<b>Hex</b><br>" +
-    "Clicked location: <br>" +
-    event.latLng.lat() +
-    "," +
-    event.latLng.lng() +
-    "<br>";
+    let contentString =
+        "Coordinates: " +
+        event.latLng.lat() +
+        ", &nbsp" +
+        event.latLng.lng() +
+        "<br>";
 
-    mhex = this.get("hex");
+    contentString += '<br><img '; 
+    switch(this.get("fillColor")) {
+        case 'red':
+        case 'black':
+            contentString += 'src="puffin-lookin-down.png"';
+            break;
+        case 'lime':
+        case 'olive':
+            contentString += 'src="happy-puffin.png"';
+            break;
+        default:
+            contentString += 'src="idle-puffin.png"';
+            break;
+    }
+    contentString += ' height="120" class="center">';
+    hexParams = this.get("hex");
 
-  contentString += createPrintout(mhex.temperature, "Average year temperature");
-  contentString += createPrintout(mhex.u_wind, "Average year wind speed");
-  contentString += '<br><img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/160/google/110/heavy-check-mark_2714.png" alt="Italian Trulli">'
+    contentString += "<table>" +
+                    "<tr>" +
+                        "<th>Param</th>" +
+                        "<th>Min</th>" +
+                        "<th>Max</th>" +
+                        "<th>Avg</th>" +
+                    "</tr>"
 
-  infoWindow.setContent(contentString);
-  infoWindow.setPosition(event.latLng);
-  infoWindow.open(map);
+    contentString += createPrintout(hexParams.temperature, "Temperature");
+    contentString += createPrintout(hexParams.u_wind, "Wind Speed");
+    contentString += "</table>";
+
+    infoWindow.setContent(contentString);
+    infoWindow.setPosition(event.latLng);
+    infoWindow.open(map);
 }
