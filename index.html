@@ -36,8 +36,7 @@
 							<span class="icon icon-bar"></span>
 							<span class="icon icon-bar"></span>
 						</button>
-						<a href="#" class="navbar-brand"><h3>HexArctic</h3></a>						<!-- <a href="#" class="navbar-brand"><h3>SUSTAINABLE ARCTIC</h3></a> -->
-
+						<a href="#" class="navbar-brand"><h3>HexArctic</h3></a>
 					</div>
 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
@@ -67,7 +66,7 @@
 					      <h2 class="wow fadeInDown" data-wow-delay="2000">
 							<span class="wow">Discover best place for your Green Power Plant </span>
 						</h2>
-						<a href="#about" class="smoothScroll btn btn-default wow fadeInDown" data-wow-delay="2000">Go To App</a>	
+						<a href="#application" class="smoothScroll btn btn-default wow fadeInDown" data-wow-delay="2000">Go To App</a>	
 					    </div>
 				  	</div>
 		        </li>
@@ -82,29 +81,23 @@
 			<div class="container">
 				<div class="row">
 					<div class="text-center col-md-12 wow fadeInDown" data-wow-delay="2000">
-						<h2>About</h2>
+						<h3>About Us</h3>
 					</div>
-					<div class="col-md-2"></div>
-					<div class="col-md-8 text-center">
+					<div class="col-md-12 text-center">
 						<p>HexArctic helps business and communities grow even beyond the polar circle. Our tool analyses many data from orbital songs and land measurements units to find the best suitable spot for renewable energy production. Whether you want to build a data storage in cold arctic lands or find the best place for temporar station or habitat, we’ve got your energy needs covered.</p>
-					</div>
-
-					<div class="col-sm-6 col-md-5 wow fadeInRight" data-wow-delay="2000">
-						<div class="col-md-6 col-sm-6 col-xs-6">
-							<img src="images/hex-puffin.svg" class="img-responsive" alt="company 1">
-						</div>
+            <img src="images/hex-puffin.svg" class="img-responsive" alt="puffin on hexagon">
 					</div>
 				</div>
 			</div>
 		</section>
 		<!-- end about -->
 
-		<!-- start service -->
-		<section id="service">
+		<!-- start energy -->
+		<section id="energy">
 			<div class="container">
 				<div class="row">
 					<div class="text-center col-md-12 wow fadeInDown" data-wow-delay="2000">
-						<h2>Renewable Enegry in Arctic</h2>
+						<h3>Renewable Enegry in Arctic</h3>
 					</div>
 					<div class="col-md-2"></div>
 					<div class="col-md-8 text-center">
@@ -149,24 +142,22 @@
 			<div class="container">
 				<div class="row">
 					<div class="text-center col-md-12 wow fadeInDown" data-wow-delay="2000">
-						<h2>Application Demo</h2>
+						<h3>Application Demo</h3>
 					</div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="row">
-					<div class="text-center col-md-12 wow fadeInDown" data-wow-delay="2000">
-					</div>
-					<select id="useCaseSelector" class="form-control">
-						<option type="text" value="1" class="form-control" >UseCase1: Power plant for Co2 recapture</option>
-						<option type="text" value="2" class="form-control" >UseCase2: Power plant for remote village</option>
-					</select>
-					<p>
-						{"temperature":{"min": 247,"max": 310,"mean": 300},"wind_speed":{"min": 0.1,"max": 8,"mean": 6}}
-					</p>
-					<input type="text" id="inputOverride" value=''>
+					<div class="col-md-12 text-center">
+						<p>Please select your preffered power use-case from the list bellow:</p>
+          
+            <select id="useCaseSelector" class="form-control" onchange="onSelectChange()" >
+              <option type="text" value="0" class="form-control" >-- Select option --</option>
+              <option type="text" value="1" class="form-control" >Power plant for Co2 recapture</option>
+              <option type="text" value="2" class="form-control" >Power plant for remote village</option>
+            </select>
 
-					<button onclick="redrawMap()" class="form-control">Localize</button> 
+            <p>or define conditions of your use-case manually:</p>
+            
+            <input type="text" id="inputOverride" class="form-control input" value='{"temperature":{"min": 247,"max": 310,"mean": 300},"wind_speed":{"min": 0.1,"max": 8,"mean": 6}}'>
+            <button onclick="onTextInput()" class="form-control button">Update map</button> 
+					</div>
 				</div>
 			</div>
 			<div id="map"> </div>
@@ -178,7 +169,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 wow fadeInDown" data-wow-delay="900">
-						<h2>Meet Our Team</h2>
+						<h3>Meet Our Team</h3>
 					</div>
 					<div class="col-md-2"></div>
 					<div class="col-md-8">

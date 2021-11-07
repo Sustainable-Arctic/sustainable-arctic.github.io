@@ -4115,19 +4115,7 @@ function parameterDistance(optimalAtribute, hexAtribute) {
     return (hexAtribute.mean - optimalAtribute.mean) * (hexAtribute.mean - optimalAtribute.mean);
 }
 
-function calculateDistances() {
-    var e = document.getElementById("useCaseSelector");
-    var inputOverride = document.getElementById("inputOverride").value;
-
-    console.log("Use case index", parseInt(e.value)-1);
-    let optimalParams = jsonBuildings.parameters[parseInt(e.value)-1];
-    console.log("optimalParams", optimalParams);
-    
-    if(inputOverride !== ""){
-        console.log("OVERRIDE", inputOverride);
-        optimalParams = JSON.parse(inputOverride);
-    }
-
+function calculateDistances(optimalParams) {
     let distances = [];
 
     minDistance = Number.POSITIVE_INFINITY;
@@ -4151,21 +4139,38 @@ function calculateDistances() {
     return distances;
 }
 
-function redrawMap() {
-    var e = document.getElementById("useCaseSelector");
-    console.log("Selected use case" + e.value);
 
-    let distances = calculateDistances();
-    for (let i = 0; i < googleHexes.length; i++) {
-        let distance = ((distances[i]-minDistance)/(maxDistance-minDistance));
-        if (distance == Number.NEGATIVE_INFINITY) {
-            googleHexes[i].setOptions({fillColor : 'black'});
-        }
-        else {   
-            distance = Math.floor(distance * (colors.length-1));
-            googleHexes[i].setOptions({fillColor : colors[distance]});
-        }
-    }
+
+function onSelectChange() {
+    var e = document.getElementById("useCaseSelector");
+    console.log("Use case index", parseInt(e.value)-1);
+    let optimalParams = jsonBuildings.parameters[parseInt(e.value)-1];
+    console.log("optimalParams", optimalParams);
+    redrawMap(optimalParams);
+}
+
+function onTextInput() {
+  
+  var inputOverride = document.getElementById("inputOverride").value;
+  if(inputOverride !== ""){
+    console.log("OVERRIDE", inputOverride);
+    optimalParams = JSON.parse(inputOverride);
+    redrawMap(optimalParams);
+  }
+}
+
+function redrawMap(optimalParams) {
+  let distances = calculateDistances(optimalParams);
+  for (let i = 0; i < googleHexes.length; i++) {
+      let distance = ((distances[i]-minDistance)/(maxDistance-minDistance));
+      if (distance == Number.NEGATIVE_INFINITY) {
+          googleHexes[i].setOptions({fillColor : 'black'});
+      }
+      else {   
+          distance = Math.floor(distance * (colors.length-1));
+          googleHexes[i].setOptions({fillColor : colors[distance]});
+      }
+  }
 }
 
 async function initMap() {
