@@ -12926,107 +12926,107 @@ var mapStyle = [
     {
       featureType: "administrative",
       elementType: "geometry.stroke",
-      stylers: [{ color: "#c9b2a6" }],
+      stylers: [{ color: "#88bed8" }],
     },
     {
       featureType: "administrative.land_parcel",
       elementType: "geometry.stroke",
-      stylers: [{ color: "#dcd2be" }],
+      stylers: [{ color: "#e8e9e4" }],
     },
     {
       featureType: "administrative.land_parcel",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#ae9e90" }],
+      stylers: [{ color: "#e8e9e4" }],
     },
     {
       featureType: "landscape.natural",
       elementType: "geometry",
-      stylers: [{ color: "#dfd2ae" }],
+      stylers: [{ color: "#294336" }],
     },
     {
       featureType: "poi",
       elementType: "geometry",
-      stylers: [{ color: "#dfd2ae" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "poi",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#93817c" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "poi.park",
       elementType: "geometry.fill",
-      stylers: [{ color: "#a5b076" }],
+      stylers: [{ color: "#6c8b6b" }],
     },
     {
       featureType: "poi.park",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#447530" }],
+      stylers: [{ color: "#6c8b6b" }],
     },
     {
       featureType: "road",
       elementType: "geometry",
-      stylers: [{ color: "#f5f1e6" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "road.arterial",
       elementType: "geometry",
-      stylers: [{ color: "#fdfcf8" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "road.highway",
       elementType: "geometry",
-      stylers: [{ color: "#f8c967" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "road.highway",
       elementType: "geometry.stroke",
-      stylers: [{ color: "#e9bc62" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "road.highway.controlled_access",
       elementType: "geometry",
-      stylers: [{ color: "#e98d58" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "road.highway.controlled_access",
       elementType: "geometry.stroke",
-      stylers: [{ color: "#db8555" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "road.local",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#806b63" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "transit.line",
       elementType: "geometry",
-      stylers: [{ color: "#dfd2ae" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "transit.line",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#8f7d77" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "transit.line",
       elementType: "labels.text.stroke",
-      stylers: [{ color: "#ebe3cd" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "transit.station",
       elementType: "geometry",
-      stylers: [{ color: "#dfd2ae" }],
+      stylers: [{ color: "#34302f" }],
     },
     {
       featureType: "water",
       elementType: "geometry.fill",
-      stylers: [{ color: "#b9d3c2" }],
+      stylers: [{ color: "#96cde9" }],
     },
     {
       featureType: "water",
       elementType: "labels.text.fill",
-      stylers: [{ color: "#92998d" }],
+      stylers: [{ color: "#96cde9" }],
     },
 ]
 
@@ -13075,7 +13075,7 @@ let USE_LIVE_DATA = false;
 let map;
 let infoWindow;
 var googleHexes = [];
-var colors = ['lime', 'olive', 'yellow', 'red']
+var colors = ['lime', 'yellow', 'olive', 'red']
 var minDistance = Number.POSITIVE_INFINITY;
 var maxDistance = Number.NEGATIVE_INFINITY;
 
