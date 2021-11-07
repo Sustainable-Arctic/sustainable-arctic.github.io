@@ -4197,7 +4197,7 @@ async function initMap() {
       });
 
     if (response != null) {
-        jsonFile = response;
+        //jsonFile = response;
         console.log("Using Live data", jsonFile.hexGridResolution[0].width);
     } else {
         console.log("Using Hardocded data", jsonFile.hexGridResolution[0].width);
