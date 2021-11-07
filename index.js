@@ -13150,7 +13150,7 @@ async function initMap() {
 
     map = new google.maps.Map(document.getElementById("map"), {
         zoom: 7,
-        center: { lat: 68.5, lng: 22.5 },
+        center: { lat: 68.3, lng: 29 },
         mapTypeId: "terrain",
         mapTypeControlOptions: {
             mapTypeIds: ["roadmap", "satellite", "hybrid", "terrain", "styled_map"],
@@ -13204,6 +13204,12 @@ async function initMap() {
             googleHex.addListener("click", showArrays);
             googleHex.addListener("mouseover", () => { highlightCell(hex, googleHex) });    
             googleHex.addListener("mouseout", () => { unHighlightCell(hex, googleHex) });  
+            console.log(jsonFile.data[i].vegetation);
+            if (jsonFile.data[i].vegetation.min == 0)
+            {
+              console.log('hmm');
+              googleHex.setOptions({fillColor : 'blue'});
+            }
             googleHexes.push(googleHex);
             i++;
         }
