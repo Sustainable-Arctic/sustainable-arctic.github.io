@@ -312,6 +312,31 @@ h1 { margin: 0; }
   }
 /* end about */
 
+/* start research */
+
+#research
+{
+  min-height: 300px;
+  padding: 80px 0 80px 0;
+  background-color: #e8e9e4ff;
+  color: #34302fff;
+}
+
+#research h3
+  {
+    font-weight: bold;
+    letter-spacing: 1px !important;
+    padding-bottom: 30px;
+  }
+
+#research img
+  {
+    width: 30%;
+    margin: 3em auto;
+    
+  }
+/* end research */
+
 /* start energy */
 #energy
 {
@@ -375,7 +400,7 @@ h1 { margin: 0; }
     color: #FFFFFF;
     margin: 1em auto;
     opacity: 0.9;
-    width: 50%;
+    width: 60%;
     min-width: 300px;
   }
 #application .input
